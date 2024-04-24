@@ -1,91 +1,80 @@
-import { useState } from 'react';
-import css from './ContactForm.module.css';
-import { useSelector, useDispatch } from 'react-redux';
-import { addContact } from '../../redux/contactsSlice';
-import { ToastContainer, toast } from 'react-toastify';
-import { nanoid } from 'nanoid';
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addContact, fetchContacts } from "../../redux/contacts/operations";
+import css from "./ContactForm.module.css";
+import toast from "react-hot-toast";
+import { selectLoading } from "../../redux/contacts/selectors";
+import SearchBox from "../SearchBox/SearchBox";
+import Contacts from "../Contacts/Contacts";
 
-export function ContactForm() {
-  const [name, setName] = useState('');
-  const [number, setNumber] = useState('');
+export default function ContactForm() {
   const dispatch = useDispatch();
-  const contacts = useSelector(state => state.contacts.contacts);
+  const [name, setName] = useState("");
+  const [number, setNumber] = useState("");
+  const loading = useSelector(selectLoading);
 
-  function handleChange(evt) {
-    const { name, value } = evt.currentTarget;
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
 
-    switch (name) {
-      case 'name':
-        setName(value);
-        break;
-      case 'number':
-        setNumber(value);
-        break;
+  const handleNameChange = (event) => {
+    setName(event.target.value);
+  };
 
-      default:
-        break;
-    }
-  }
+  const handleNumberChange = (event) => {
+    setNumber(event.target.value);
+  };
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    if (
-      contacts.find(
-        contact => contact.name.toLowerCase() === name.toLowerCase()
-      )
-    ) {
-      return toast.warning(`${name} is alredy in contacts.`, {
-        autoClose: 2000,
-        theme: 'colored',
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    dispatch(addContact({ name, number }))
+      .unwrap()
+      .then(() => {
+        toast.success(`New contact with name ${name} added!`);
+      })
+      .catch(() => {
+        toast.error("Something went wrong..");
       });
-    } else if (contacts.find(contact => contact.number === number)) {
-      return toast.warning(`${number} is already in contacts`, {
-        autoClose: 2000,
-        theme: 'colored',
-      });
-    } else {
-      dispatch(addContact({ id: nanoid(), name, number }));
-      toast.success(`${name} has been added`, {
-        autoClose: 2000,
-        theme: 'colored',
-      });
-    }
-    setName('');
-    setNumber('');
-  }
+
+    setName("");
+    setNumber("");
+  };
 
   return (
-    <form className={css.form} onSubmit={handleSubmit}>
-      <label>
-        <h1 className={css.plateName}>Name</h1>
-        <input
-          className={css.item}
-          type="text"
-          name="name"
-          value={name}
-          onChange={handleChange}
-        //   pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-          title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-          required 
-        />
-      </label>
-      <label>
-        <h2 className={css.plateName}>Number</h2>
-        <input
-          className={css.item}
-          type="tel"
-          name="number"
-          value={number}
-          onChange={handleChange}
-        //   pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-          title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-          required
-        />
-      </label>
-      <button className={css.formBtn} type="submit">
-        Add contact
-      </button>
-      <ToastContainer />
-    </form>
+    <div>
+      <form className={css.form} onSubmit={handleSubmit}>
+        <label>
+          <span className={css.label_span}>Name</span>
+          <input
+            type="text"
+            name="name"
+            value={name}
+            required
+            onChange={handleNameChange}
+          />
+        </label>
+        <label>
+          <span className={css.label_span}>Phone</span>
+          <input
+            type="tel"
+            name="number"
+            value={number}
+            required
+            onChange={handleNumberChange}
+          />
+        </label>
+        <button type="submit">Add contact</button>
+      </form>
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
+        <div className="contacts_page-contacts-con">
+          <h2>Contacts</h2>
+          <SearchBox />
+          <Contacts />
+        </div>
+      )}
+    </div>
   );
 }

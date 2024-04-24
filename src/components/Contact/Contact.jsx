@@ -2,7 +2,8 @@ import { useDispatch } from "react-redux";
 // import { deleteContact } from "../../redux/contactsSlice";
 import css from "./Contact.module.css";
 import toast from "react-hot-toast";
-import { deleteContact } from "../../redux/contactsOps";
+import { deleteContact } from "../../redux/contacts/operations";
+
 export default function Contact({ contact: { id, name, number } }) {
   const dispatch = useDispatch();
 
