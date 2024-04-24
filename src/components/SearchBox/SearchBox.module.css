@@ -1,0 +1,15 @@
+.container {
+  margin-top: 5px;
+  width: 400px;
+  padding: 10px;
+  border: 1px solid rgb(255, 255, 255);
+  border-radius: 5px;
+}
+
+.findContact{
+  font-size: 17px;
+}
+
+.cont{
+  font-size: 30px;
+}

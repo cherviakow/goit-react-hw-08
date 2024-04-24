@@ -1,0 +1,39 @@
+.form{
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 2px solid black;
+    width: 400px;
+    height: auto;
+    text-align: center;
+}
+
+.item{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5px;
+    width: 70%;
+    padding: 5px;
+    cursor: pointer;
+    border: 1px solid #b02828;
+}
+
+.formBtn{
+    margin-top: 40px;
+    margin-bottom: 25px;
+    font-size: 15px;
+    cursor: pointer;
+    background-color: rgb(224, 214, 214);
+    border-radius: 5px solid rgb(4, 4, 4);
+    transition: all 500ms ease;
+}
+
+.formBtn:hover{
+    background-color: #2f63c3;
+	color: #ffffff;
+}
+
+.plateName{
+    font-size: 25px;
+}

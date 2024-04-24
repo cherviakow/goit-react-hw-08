@@ -1,0 +1,58 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  padding: 10px;
+  border: 2px solid rgb(5, 5, 4);
+  
+}
+
+.label_span {
+  margin-bottom: 5px;
+  font-weight: bold;
+  display: block;
+}
+
+input {
+  width: 70%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #acacac;
+  border-radius: 4px;
+  font-size: 16px;
+
+  &:hover {
+    background-color: rgb(255, 255, 255);
+
+    border-color: #007bff;
+  }
+}
+
+.phBook{
+  font-size: 30px;
+}
+
+.formBtn{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 15px;
+  cursor: pointer;
+  background-color: white;
+  border-radius: 5px solid black;
+  transition: all 500ms ease;
+}
+
+button {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 15px;
+  cursor: pointer;
+  background-color: white;
+  border-radius: 5px solid black;
+  transition: all 500ms ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+  color: white;
+}

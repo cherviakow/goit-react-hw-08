@@ -1,0 +1,33 @@
+.contacts_list__item {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+
+  margin-bottom: 15px;
+  padding: 5px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  &:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  }
+}
+
+.contacts_list__item span {
+  font-style: italic;
+  color: #888;
+  flex-grow: 1;
+}
+
+.contacts_button {
+  border: 1px dotted gold;
+  padding: 5px 10px; /* Збільшення відступів */
+  background-color: transparent; /* Прозорий фон */
+  color: #888;
+  cursor: pointer;
+  transition: color 0.3s; /* Плавна анімація зміни кольору */
+}
+
+.contacts_button:hover {
+  color: white;
+  background-color: blue;
+}
