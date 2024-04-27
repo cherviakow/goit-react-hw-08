@@ -4,6 +4,7 @@ import css from "./Contact.module.css";
 import toast from "react-hot-toast";
 import { deleteContact } from "../../redux/contacts/operations";
 
+// eslint-disable-next-line react/prop-types
 export default function Contact({ contact: { id, name, number } }) {
   const dispatch = useDispatch();
 
