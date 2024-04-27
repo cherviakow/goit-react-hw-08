@@ -1,39 +1,50 @@
-.form{
-    margin-top: 50px;
-    margin-left: auto;
-    margin-right: auto;
-    border: 2px solid black;
-    width: 400px;
-    height: auto;
-    text-align: center;
-}
-
-.item{
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    
+    padding: 10px;
+    border: 2px solid rgb(0, 0, 0);
+   
+  }
+  
+  .label_span {
+    margin-bottom: 5px;
+    font-weight: bold;
     display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 5px;
-    width: 70%;
-    padding: 5px;
+  }
+  
+  input {
+    margin-left: 20px;
+    width: 90%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid;
+    border-radius: 4px;
+    font-size: 16px;
+  
+    &:hover {
+      background-color: rgb(235, 235, 235);
+  
+      border-color: rgb(21, 103, 197);
+    }
+  }
+  
+  button {
+    padding: 10px 15px;
+    width: 130px;
+    margin-left: 20px;
+    border: 1px solid black;
+    border-radius: 4px;
+    background-color: #ffffff;
+    border-color: black;
+    color: inherit;
+    font-size: 16px;
     cursor: pointer;
-    border: 1px solid #b02828;
-}
 
-.formBtn{
-    margin-top: 40px;
-    margin-bottom: 25px;
-    font-size: 15px;
-    cursor: pointer;
-    background-color: rgb(224, 214, 214);
-    border-radius: 5px solid rgb(4, 4, 4);
-    transition: all 500ms ease;
-}
-
-.formBtn:hover{
-    background-color: #2f63c3;
-	color: #ffffff;
-}
-
-.plateName{
-    font-size: 25px;
-}
+  }
+  
+  button:hover {
+    background-color: rgb(21, 103, 197);
+    color: rgb(255, 255, 255);
+  }

@@ -45,17 +45,19 @@ export default function ContactForm() {
     <div>
       <form className={css.form} onSubmit={handleSubmit}>
         <label>
-          <span className={css.label_span}>Name</span>
+          <span className={css.label_span}>Name  </span>
           <input
             type="text"
             name="name"
+            className={css.input1}
             value={name}
             required
             onChange={handleNameChange}
           />
         </label>
         <label>
-          <span className={css.label_span}>Phone</span>
+          
+          <span className={css.label_span}>Phone  </span>
           <input
             type="tel"
             name="number"
@@ -64,13 +66,14 @@ export default function ContactForm() {
             onChange={handleNumberChange}
           />
         </label>
+        
         <button type="submit">Add contact</button>
       </form>
       {loading ? (
         <p>Loading...</p>
       ) : (
         <div className="contacts_page-contacts-con">
-          <h2>Contacts</h2>
+      
           <SearchBox />
           <Contacts />
         </div>
